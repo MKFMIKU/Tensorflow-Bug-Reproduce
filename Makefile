@@ -20,7 +20,7 @@ SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 all: $(LIB_DIR)/ops.so
 
 # Main library
-$(LIB_DIR)/hdrnet_ops.so: $(CUDA_OBJ) $(LIB_DIR) $(SRCS)
+$(LIB_DIR)/ops.so: $(CUDA_OBJ) $(LIB_DIR) $(SRCS)
 	$(CC) -shared -o $@ $(SRCS) $(CUDA_OBJ) $(CFLAGS) $(LDFLAGS)
 
 # Cuda kernels
