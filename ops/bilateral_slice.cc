@@ -26,6 +26,10 @@ REGISTER_OP("BilateralSliceApply")
   .Input("input: float")
   .Attr("has_offset: bool")
   .Output("out: float")
+  .SetShapeFn([](::tensorflow::shape_inference::InferenceContext* c) {
+      c->set_output(0, c->input(2));
+      return Status::OK();
+   })
   .Doc(R"doc(Slices input in in the location defined by guide and apply it, to produce output.)doc");
 
 REGISTER_OP("BilateralSliceApplyGrad")
